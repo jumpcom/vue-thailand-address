@@ -14,6 +14,8 @@ import translateTarget from '../utils/translateTarget';
 function getPossibles(dataSource: ReadonlyArray<AddressEntry>, target: Target, query: string): AddressEntry[] {
 	const newDataSource = dataSource.slice(0); // Prevent mutate the original data source. Clone it!
 
+	query = query.replace('[','').replace(']','')
+
 	const key = translateTarget(target);
 	const pattern = new RegExp(`^${query}`);
 	const possibles: AddressEntry[] = newDataSource.filter(item => {
